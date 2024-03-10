@@ -109,3 +109,16 @@ hr {
   padding: 0;
   margin: 0;
 }
+
+@media screen and (max-width: 530px) {
+  .detailed__container {
+    flex-direction: column;
+  }
+
+  .view__chart {
+    display: none;
+  }
+  .detailed__timeline {
+    display: none;
+  }
+}

@@ -10,3 +10,12 @@
   --soft-color: #ddd;
   --dark-color: #2a3447;
 }
+
+/*variables breakdown*/
+:root{
+  --xxl:1400px;
+  --xl:1200px;
+  --lg:1024px;
+  --md:768px;
+  --sm:480px;
+}

@@ -1,3 +1,6 @@
+//TimeLine.tsx
+//Parent: DetailedInfo.tsx
+
 import './timeLine.css';
 
 import { Activities } from '../../../types/types';

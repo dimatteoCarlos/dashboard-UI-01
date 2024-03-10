@@ -1,10 +1,13 @@
 /*home.css*/
+@import url('../../styles/variables.css');
 
+/*xxl*/
 .home__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.2rem;
   grid-auto-rows: minmax(7rem, auto);
+  grid-auto-rows: dense;
   height: 100%;
 }
 
@@ -13,4 +16,86 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
+}
+
+/*xl*/
+@media screen and (max-width: 1200px) {
+  .home__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*lg*/
+@media screen and (max-width: 1024px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*md*/
+@media screen and (max-width: 768px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topBox__img img {
+    display: block;
+  }
+}
+/*sm*/
+@media screen and (max-width: 530px) {
+  .home__container {
+    grid-template-columns: minmax(1fr, auto);
+  }
+
+  [class^='home__tile'] {
+    display: none;
+  }
+
+  #home__tile__7 {
+    display: none;
+  }
+  #home__tile__4 {
+    display: none;
+  }
+
+  .topBox__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: max-content;
+  }
+  .topBox__title {
+    font-size: 2rem;
+    color: goldenrod;
+  }
+  .topBox__img img {
+    display: none;
+  }
+
+  .topBox__userItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .topBox__userEmail {
+    display: none;
+  }
+
+  .topBox__username {
+    font-weight: 400;
+    font-size: 1.5rem;
+    width: max-content;
+  }
+  .topBox__amount {
+    font-size: 1.5rem;
+  }
+}
+
+/*xsm till 377px*/
+@media screen and (max-width: 480px) {
 }

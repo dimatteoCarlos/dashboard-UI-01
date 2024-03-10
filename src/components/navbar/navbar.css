@@ -70,3 +70,10 @@
   padding: 0.5rem 0;
   color: var(--main-color, 'white');
 }
+
+
+@media screen and (max-width:530px) {
+  .navbar__container{
+    display:none;
+  }
+}

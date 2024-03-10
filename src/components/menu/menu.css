@@ -2,6 +2,7 @@
 [class*='menu'] {
   font-size: 0.75rem;
 }
+
 .menu__container {
   display: flex;
   flex-direction: column;
@@ -35,4 +36,28 @@
 
 .menu__link-title {
   font-weight: bold;
+}
+
+@media screen and (max-width: 530px) {
+
+ 
+  .menu__container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: max-content;
+  }
+
+  .menu__title {
+    font-size: 0.5rem;
+    text-align: center;
+  }
+  .menu__link-title {
+    font-size: 0.5rem;
+    font-weight: 500;
+  }
+
+  img {
+    display: none;
+  }
 }

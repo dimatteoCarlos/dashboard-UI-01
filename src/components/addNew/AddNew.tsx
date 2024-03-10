@@ -6,6 +6,11 @@ import React, { FormEvent } from 'react';
 
 import './addNew.css';
 
+import {
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
+
 type AddNewTypeProp = {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isModalOpen: boolean;
@@ -21,6 +26,35 @@ const AddNew = ({
   itemToAdd,
   routePage,
 }: AddNewTypeProp): JSX.Element => {
+  //Test the Api
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (id: number) => {
+      return fetch(`http://localhost:33000/api/${routePage}`, {
+        method: 'post',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: 'new id must be unique',
+          img: 'new img url',
+          lastName: 'new lastname',
+          firstName: 'Test',
+          email: 'test@gmail.com',
+          phone: 'new phone',
+          createdAt: '07.03.2024',
+          verified: true,
+        }),
+      });
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [`all${routePage}`] });
+    },
+  });
+
   //--------functions---------
   const handleCloseModal = () => {
     console.log('click to close modal');
@@ -30,6 +64,7 @@ const AddNew = ({
   const handleFormSubmit = (e: FormEvent<Element>) => {
     e.preventDefault();
     //add new Item
+    mutation.mutate(100);
     console.log({ itemToAdd, routePage });
     setIsModalOpen(false);
   };

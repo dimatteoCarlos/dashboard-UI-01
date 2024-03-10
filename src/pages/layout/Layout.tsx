@@ -7,7 +7,13 @@ import { menu } from '../../data.ts';
 import Menu from '../../components/menu/Menu';
 import Footer from '../../components/footer/Footer';
 
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+
 const Layout = () => {
+
+  const queryClient = new QueryClient();
+  
   return (
     <>
       <div className='main__layout'>
@@ -17,7 +23,11 @@ const Layout = () => {
             <Menu menu={menu} />
           </div>
           <div className='main__content'>
-            <Outlet />
+
+          <QueryClientProvider client={queryClient}>
+              <Outlet />
+            </QueryClientProvider>
+          
           </div>
         </div>
         <div className='main__footer'>

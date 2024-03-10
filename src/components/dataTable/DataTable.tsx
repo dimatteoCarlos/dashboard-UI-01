@@ -11,6 +11,8 @@ import {
 import './dataTable.css';
 import { Link } from 'react-router-dom';
 
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 type DataTableTypeProp = {
   rows: Object[];
   headerColumn: GridColDef<Object>[];
@@ -22,9 +24,30 @@ const DataTable = ({
   headerColumn,
   routePage,
 }: DataTableTypeProp): JSX.Element => {
+  //TankStackQuery
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (id: number) => {
+      return fetch(`http://localhost:33000/api/${routePage}/${id}`, {
+        method: 'delete',
+      });
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [`all${routePage}`] });
+    },
+  });
+
   //--------functions
   const handleDelete = (id: number) => {
-    console.log(`id: ${id} has been deleted`, { routePage });
+    {
+
+      mutation.mutate(id);
+      mutation.isSuccess
+        ? console.log(`id: ${id} has been deleted`, { routePage })
+        : null;
+    }
   };
 
   const actionColumn: GridColDef = {
